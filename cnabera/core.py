@@ -1,2 +1,4 @@
+
 def main():
-    print('print from application')
+    msg = 'print from application'
+    return msg
