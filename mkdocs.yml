@@ -1,9 +1,9 @@
 site_name: cnabera
 site_description: To do
-site_author: Jhonatan Teodoro
+site_author: Jeitto Team
 
-repo_url: https://github.com/jhonatanlteodoro/cnabera
-edit_uri: https://github.com/jhonatanlteodoro/cnabera/edit/master/docs
+repo_url: https://github.com/jeitto/cnabera
+edit_uri: https://github.com/jeitto/cnabera/edit/master/docs
 
 theme: readthedocs
 

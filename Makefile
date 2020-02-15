@@ -1,7 +1,7 @@
 # Project settings
 PROJECT := cnabera
 PACKAGE := cnabera
-REPOSITORY := jhonatanlteodoro/cnabera
+REPOSITORY := jeitto/cnabera
 
 # Project paths
 PACKAGES := $(PACKAGE) tests
