@@ -2,7 +2,7 @@
 
 To do
 
-This project was generated with [cookiecutter](https://github.com/audreyr/cookiecutter) using [jacebrowning/template-python](https://github.com/jacebrowning/template-python).
+Esse projeto foi gerado com  [cookiecutter](https://github.com/audreyr/cookiecutter) usando [jacebrowning/template-python](https://github.com/jacebrowning/template-python).
 
 [![Unix Build Status](https://img.shields.io/travis/jhonatanlteodoro/cnabera/master.svg?label=unix)](https://travis-ci.org/jhonatanlteodoro/cnabera)
 [![Windows Build Status](https://img.shields.io/appveyor/ci/jhonatanlteodoro/cnabera/master.svg?label=window)](https://ci.appveyor.com/project/jhonatanlteodoro/cnabera)
