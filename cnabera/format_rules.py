@@ -1,7 +1,34 @@
 from collections import namedtuple
+from datetime import datetime
+
+
+def return_the_same_entry(value, **kwargs):
+    return value
+
+
+def complete_with_space_the_right(value, **kwargs):
+    return str(value).ljust(kwargs['length'])
+
+
+def complete_with_space_the_left(value, **kwargs):
+    return str(value).rjust(kwargs['length'])
+
+
+def complete_with_zero_the_left(value, **kwargs):
+    return str(value).zfill(kwargs['length'])
+
+
+def get_date_as_dd_mm_aa(date: datetime.date, **kwargs):
+    return f'{date.day}{date.month}{str(date.year)[:2]}'
+
+
+def get_string_space_by_length(value, **kwargs):
+    return ' ' * kwargs['length']
 
 
 Rules = namedtuple('Rules', 'position_init position_end length method_formatter')
+
+
 class FormatRulesHeaders:
     """
     Example data:
