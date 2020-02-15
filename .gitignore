@@ -42,5 +42,8 @@ Icon*
 # Sublime Text
 *.sublime-workspace
 
+# PyCharm
+*.idea/
+
 # Eclipse
 .settings
