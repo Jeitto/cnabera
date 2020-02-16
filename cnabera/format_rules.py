@@ -62,9 +62,9 @@ class GenFile:
     formatter_footer = FormatRulesFooter
     line_number = 1
 
-    def run_rules_format(self, basestring, data):
+    def run_rules_format(self, formatter, basestring, data):
         for key, value in data.items():
-            rules = getattr(self.formatter, key)
+            rules = getattr(formatter, key)
             current_value = str(rules.method_formatter(value, **rules._asdict()))
 
             before_pointer_cut = basestring[:rules.position_init]
@@ -77,13 +77,13 @@ class GenFile:
         basestring = " " * self.LENGTH
         data["sequence_registry"] = self.line_number
         self.line_number += 1
-        return self.run_rules_format(basestring, data)
+        return self.run_rules_format(self.formatter_headers, basestring, data)
 
     def do_line_transaction(self, line):
         basestring = " " * self.LENGTH
         line["sequence_registry"] = self.line_number
         self.line_number += 1
-        return self.run_rules_format(basestring, line)
+        return self.run_rules_format(self.formatter_transactions, basestring, line)
 
     def do_transaction(self, data):
         lines = []
@@ -95,7 +95,7 @@ class GenFile:
     def do_footer(self, data):
         basestring = " " * self.LENGTH
         data["sequence_registry"] = self.line_number
-        return self.run_rules_format(basestring, data)
+        return self.run_rules_format(self.formatter_footer, basestring, data)
 
     def execute(self, file_name, header_data, transaction_data, footer_data):
         line_header = self.do_header(header_data)
