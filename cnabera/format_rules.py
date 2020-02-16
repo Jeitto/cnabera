@@ -75,26 +75,32 @@ class GenFile:
 
     def do_header(self, data):
         basestring = " " * self.LENGTH
-        for key, value in data.items():
-            rules = getattr(self.formatter, key)
-            current_value = str(rules.method_formatter(value, **rules._asdict()))
+        data["sequence_registry"] = self.line_number
+        self.line_number += 1
+        return self.run_rules_format(basestring, data)
 
-            before_pointer_cut = basestring[:rules.position_init]
-            after_pointer_cut = basestring[rules.position_end + 1:]
-
-            basestring = f'{before_pointer_cut}{current_value}{after_pointer_cut}'
-        return basestring
+    def do_line_transaction(self, line):
+        basestring = " " * self.LENGTH
+        line["sequence_registry"] = self.line_number
+        self.line_number += 1
+        return self.run_rules_format(basestring, line)
 
     def do_transaction(self, data):
-        basestring = " " * self.LENGTH
-        ...
+        lines = []
+        for line in data:
+            lines.append(self.do_line_transaction(line))
+
+        return lines
 
     def do_footer(self, data):
         basestring = " " * self.LENGTH
-        ...
+        data["sequence_registry"] = self.line_number
+        return self.run_rules_format(basestring, data)
 
-    def execute(self, header_data, transaction_data):
+    def execute(self, file_name, header_data, transaction_data, footer_data):
         line_header = self.do_header(header_data)
         lines_transactions = self.do_transaction(transaction_data)
-        line_footer = self.do_footer()
+        line_footer = self.do_footer(footer_data)
+
+
         return 'wip'
