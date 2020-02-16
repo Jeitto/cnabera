@@ -34,7 +34,7 @@ def transform_float_to_int_with_zero_left(value, **kwargs):
 Rules = namedtuple('Rules', 'position_init position_end length method_formatter')
 
 
-class FormatRulesHeaders:
+class BaseFormatRules:
     """
     Example data:
         id_registry = Rules(0, 0, 1, return_the_same_entry)
