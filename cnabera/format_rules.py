@@ -26,6 +26,11 @@ def get_string_space_by_length(value, **kwargs):
     return ' ' * kwargs['length']
 
 
+def transform_float_to_int_with_zero_left(value, **kwargs):
+    convert_result = int(value * 100)
+    return complete_with_zero_the_left(convert_result, **kwargs)
+
+
 Rules = namedtuple('Rules', 'position_init position_end length method_formatter')
 
 
