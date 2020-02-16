@@ -43,6 +43,18 @@ class BaseFormatRules:
     ...
 
 
+class FormatRulesHeaders(BaseFormatRules):
+    ...
+
+
+class FormatRulesTransaction(BaseFormatRules):
+    ...
+
+
+class FormatRulesFooter(BaseFormatRules):
+    ...
+
+
 class GenFile:
     LENGTH = 444
     formatter = FormatRulesHeaders
