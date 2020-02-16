@@ -102,5 +102,10 @@ class GenFile:
         lines_transactions = self.do_transaction(transaction_data)
         line_footer = self.do_footer(footer_data)
 
+        with open(file_name, 'w') as file:
+            file.write(line_header)
+            for line_data in lines_transactions:
+                file.write(line_data)
+            file.write(line_footer)
 
         return 'wip'
