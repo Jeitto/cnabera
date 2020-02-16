@@ -57,7 +57,21 @@ class FormatRulesFooter(BaseFormatRules):
 
 class GenFile:
     LENGTH = 444
-    formatter = FormatRulesHeaders
+    formatter_headers = FormatRulesHeaders
+    formatter_transactions = FormatRulesTransaction
+    formatter_footer = FormatRulesFooter
+    line_number = 1
+
+    def run_rules_format(self, basestring, data):
+        for key, value in data.items():
+            rules = getattr(self.formatter, key)
+            current_value = str(rules.method_formatter(value, **rules._asdict()))
+
+            before_pointer_cut = basestring[:rules.position_init]
+            after_pointer_cut = basestring[rules.position_end + 1:]
+
+            basestring = f'{before_pointer_cut}{current_value}{after_pointer_cut}'
+        return basestring
 
     def do_header(self, data):
         basestring = " " * self.LENGTH
