@@ -81,7 +81,7 @@ class GenFile:
 
     def do_line_transaction(self, line):
         basestring = " " * self.LENGTH
-        line["sequence_registry"] = self.line_number
+        line["sequential_number"] = self.line_number
         self.line_number += 1
         return self.run_rules_format(self.formatter_transactions, basestring, line)
 
@@ -94,7 +94,7 @@ class GenFile:
 
     def do_footer(self, data):
         basestring = " " * self.LENGTH
-        data["sequence_registry"] = self.line_number
+        data["sequential_number"] = self.line_number
         return self.run_rules_format(self.formatter_footer, basestring, data)
 
     def execute(self, file_name, header_data, transaction_data, footer_data):
@@ -103,9 +103,7 @@ class GenFile:
         line_footer = self.do_footer(footer_data)
 
         with open(file_name, 'w') as file:
-            file.write(line_header)
+            file.write(f'{line_header}\n')
             for line_data in lines_transactions:
-                file.write(line_data)
+                file.write(f'{line_data}\n')
             file.write(line_footer)
-
-        return 'wip'
