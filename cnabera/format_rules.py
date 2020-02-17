@@ -2,20 +2,27 @@ from collections import namedtuple
 from datetime import datetime
 
 
+def _truncate_value(value, length):
+    return str(value)[:length]
+
+
 def return_the_same_entry(value, **kwargs):
     return value
 
 
 def complete_with_space_the_right(value, **kwargs):
-    return str(value).ljust(kwargs['length'])
+    truncated_value = _truncate_value(value, kwargs['length'])
+    return truncated_value.ljust(kwargs['length'])
 
 
 def complete_with_space_the_left(value, **kwargs):
-    return str(value).rjust(kwargs['length'])
+    truncated_value = _truncate_value(value, kwargs['length'])
+    return truncated_value.rjust(kwargs['length'])
 
 
 def complete_with_zero_the_left(value, **kwargs):
-    return str(value).zfill(kwargs['length'])
+    truncated_value = _truncate_value(value, kwargs['length'])
+    return truncated_value.zfill(kwargs['length'])
 
 
 def get_date_as_dd_mm_aa(date: datetime.date, **kwargs):
