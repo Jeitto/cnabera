@@ -25,8 +25,8 @@ def complete_with_zero_the_left(value, **kwargs):
     return truncated_value.zfill(kwargs['length'])
 
 
-def get_date_as_dd_mm_aa(date: datetime.date, **kwargs):
-    return f'{date.day}{date.month}{str(date.year)[:2]}'
+def get_date_as_dd_mm_yy(date: datetime.date, **kwargs):
+    return date.strftime('%d%m%y')
 
 
 def get_string_space_by_length(value, **kwargs):
