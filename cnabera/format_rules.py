@@ -25,7 +25,7 @@ def complete_with_zero_the_left(value, **kwargs):
     return truncated_value.zfill(kwargs['length'])
 
 
-def get_date_as_dd_mm_yy(date: datetime.date, **kwargs):
+def get_date_as_dd_mm_yy(date: datetime, **kwargs):
     return date.strftime('%d%m%y')
 
 
